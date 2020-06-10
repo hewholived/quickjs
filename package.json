@@ -1,0 +1,27 @@
+{
+  "name": "quickjs",
+  "version": "1.0.0",
+  "description": "<h1>QuickJS Javascript Engine</h1>",
+  "main": "hello.js",
+  "directories": {
+    "doc": "doc",
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hewholived/quickjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hewholived/quickjs/issues"
+  },
+  "homepage": "https://github.com/hewholived/quickjs#readme",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}

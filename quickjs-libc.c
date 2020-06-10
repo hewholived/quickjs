@@ -1712,9 +1712,7 @@ static void os_signal_handler(int sig_num)
     os_pending_signals |= ((uint64_t)1 << sig_num);
 }
 
-#if defined(_WIN32)
 typedef void (*sighandler_t)(int sig_num);
-#endif
 
 static JSValue js_os_signal(JSContext *ctx, JSValueConst this_val,
                             int argc, JSValueConst *argv)
@@ -2449,7 +2447,7 @@ static JSValue js_os_exec(JSContext *ctx, JSValueConst this_val,
     JSValueConst options, args = argv[0];
     JSValue val, ret_val;
     const char **exec_argv, *file = NULL, *str, *cwd = NULL;
-    char **envp = environ;
+    char **envp = NULL;
     uint32_t exec_argc, i;
     int ret, pid, status;
     BOOL block_flag = TRUE, use_path = TRUE;
@@ -2625,7 +2623,7 @@ static JSValue js_os_exec(JSContext *ctx, JSValueConst this_val,
     for(i = 0; i < exec_argc; i++)
         JS_FreeCString(ctx, exec_argv[i]);
     js_free(ctx, exec_argv);
-    if (envp != environ) {
+    if (envp != NULL) {
         char **p;
         p = envp;
         while (*p != NULL) {
